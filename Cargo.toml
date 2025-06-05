@@ -1,6 +1,7 @@
 [workspace]
 members = [
-    "my-macros"
+    "my-macros",
+    "decl-macros"
 ]
 
 [package]
@@ -12,3 +13,4 @@ edition = "2021"
 [dependencies]
 tokio = { version = "1.36", features = ["full"] }
 my-macros = { path = "./my-macros" }
+decl-macros = { path = "./decl-macros" }

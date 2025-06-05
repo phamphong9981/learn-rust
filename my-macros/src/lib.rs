@@ -1,8 +1,8 @@
 use proc_macro::TokenStream;
 use quote::quote;
-use syn::{DeriveInput, parse_macro_input};
+use syn::{parse_macro_input, DeriveInput};
 
-// Một procedural macro đơn giản
+// Một function macro đơn giản
 #[proc_macro]
 pub fn make_greeting(input: TokenStream) -> TokenStream {
     let input = input.to_string();
@@ -21,7 +21,7 @@ pub fn hello_world_derive(input: TokenStream) -> TokenStream {
     let expanded = quote! {
         impl #name {
             pub fn hello_world(&self) {
-                println!("Xin chào từ {}!", stringify!(#name));
+                println!("Xin chào từ {}! {}", stringify!(#name), self.name);
             }
         }
     };
