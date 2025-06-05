@@ -34,12 +34,11 @@ async fn main() {
     test_function();
 
     // Sử dụng vec_of_strings macro
-    println!("=== Running Vec of Strings ===");
+    println!("============== Running Declarative Macros ==============");
     let strings = vec_of_strings!("Hello", "World", "from", "macro");
     println!("Vector of strings: {:?}", strings);
 
     // Sử dụng calculate macro
-    println!("=== Running Calculate Macro ===");
     let sum = calculate!(+ 1, 2, 3, 4, 5);
     let product = calculate!(*1, 2, 3, 4, 5);
     println!("Sum: {}, Product: {}", sum, product);
