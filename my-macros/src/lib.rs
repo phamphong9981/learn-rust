@@ -1,6 +1,24 @@
 use proc_macro::TokenStream;
 use quote::quote;
-use syn::{parse_macro_input, DeriveInput};
+use syn::{parse::Parse, parse::ParseStream, parse_macro_input, DeriveInput, LitStr, Token};
+
+// Cấu trúc để parse input của macro
+struct GreetingInput {
+    name: LitStr,
+    _comma: Token![,],
+    age: LitStr,
+}
+
+// Implement Parse trait cho GreetingInput
+impl Parse for GreetingInput {
+    fn parse(input: ParseStream) -> syn::Result<Self> {
+        Ok(GreetingInput {
+            name: input.parse()?,
+            _comma: input.parse()?,
+            age: input.parse()?,
+        })
+    }
+}
 
 // Một function macro đơn giản
 #[proc_macro]
@@ -8,6 +26,15 @@ pub fn make_greeting(input: TokenStream) -> TokenStream {
     let input = input.to_string();
     let expanded = quote! {
         println!("Xin chào, {}!", #input);
+    };
+    expanded.into()
+}
+
+#[proc_macro]
+pub fn make_greeting2(input: TokenStream) -> TokenStream {
+    let GreetingInput { name, age, .. } = parse_macro_input!(input as GreetingInput);
+    let expanded = quote! {
+        println!("Xin chào, {}! Bạn {} tuổi.", #name, #age);
     };
     expanded.into()
 }

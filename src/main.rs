@@ -1,6 +1,6 @@
 mod topics;
 use decl_macros::{calculate, create_function, log_vars, vec_of_strings};
-use my_macros::{log_function, make_greeting, HelloWorld};
+use my_macros::{log_function, make_greeting, make_greeting2, HelloWorld};
 
 #[derive(HelloWorld)]
 struct Person {
@@ -20,6 +20,7 @@ async fn main() {
     // Sử dụng function macro
     println!("=== Running Function Macro ===");
     make_greeting!("Phong");
+    make_greeting2!("Phong", "25");
 
     // Sử dụng derive macro
     println!("=== Running Derive Macro ===");
