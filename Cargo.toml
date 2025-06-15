@@ -3,7 +3,7 @@ members = [
     "my-macros",
     "decl-macros",
     "fmt-module"
-, "std-macros"]
+, "std-macros", "rc"]
 
 [package]
 name = "rust-learn"
