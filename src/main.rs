@@ -54,4 +54,9 @@ async fn main() {
 
     println!("=== Running Async Programming Examples ===");
     topics::async_programming::basic_async_example().await;
+
+    println!("=== Running Struct Examples ===");
+    let user = topics::structs::User::new("Phong".to_string(), 25);
+    println!("User: {}", user.get_age());
+    println!("User: {}", user.get_name());
 }
